@@ -1,29 +1,91 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: #0e0e12;
-  color: #e4e4e8;
-  line-height: 1.6;
-  padding: 2rem;
+.stat-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-family: system-ui, sans-serif;
 }
 
-.proposal {
-  background: #16161d;
-  border: 1px solid #2a2a3a;
-  border-radius: 8px;
-  padding: 1.5rem;
-  max-width: 500px;
-  margin: 0 auto;
+.stat-bar__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.9rem;
+}
+
+.stat-bar__name {
+  font-weight: 600;
+}
+
+.stat-bar__value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.stat-bar__track {
+  height: 24px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
-.proposal-label {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #8888a0;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #2a2a3a;
+.stat-bar__fill {
+  position: relative;
+  height: 100%;
+  border-radius: 12px;
+  transition: width 0.4s ease;
+  animation: fillIn 1s ease-out;
+}
+
+.stat-bar__fill::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 50% 0;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+}
+
+@keyframes fillIn {
+  from {
+    width: 0;
+  }
+}
+
+.stat-bar--hp .stat-bar__value {
+  color: #e53935;
+}
+.stat-bar--hp .stat-bar__track {
+  background: #fdecea;
+}
+.stat-bar--hp .stat-bar__fill {
+  background: linear-gradient(90deg, #b71c1c, #ef5350);
+}
+
+.stat-bar--mana .stat-bar__value {
+  color: #1e88e5;
+}
+.stat-bar--mana .stat-bar__track {
+  background: #e3f2fd;
+}
+.stat-bar--mana .stat-bar__fill {
+  background: linear-gradient(90deg, #0d47a1, #42a5f5);
+}
+
+.stat-bar--stamina .stat-bar__value {
+  color: #43a047;
+}
+.stat-bar--stamina .stat-bar__track {
+  background: #e8f5e9;
+}
+.stat-bar--stamina .stat-bar__fill {
+  background: linear-gradient(90deg, #1b5e20, #66bb6a);
+}
+
+.stat-bar--xp .stat-bar__value {
+  color: #f9a825;
+}
+.stat-bar--xp .stat-bar__track {
+  background: #fffde7;
+}
+.stat-bar--xp .stat-bar__fill {
+  background: linear-gradient(90deg, #f57f17, #ffee58);
 }
