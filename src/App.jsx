@@ -1,7 +1,9 @@
+import StatBar from './components/StatBar.jsx'
+
 function App() {
   return (
     <>
-      <h1>Hello React</h1>
+      <StatBar name="Vie" value={270} max={667} type="hp" />
     </>
   )
 }
